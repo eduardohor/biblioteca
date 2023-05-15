@@ -18,9 +18,13 @@
                 <th scope="row">{{$user->id}}</th>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>
-                    <a class="btn btn-warning text-white">Editar</a>
-                    <a class="btn btn-danger text-white">Excluir</a>
+                <td class="d-flex justify-content-around">
+                    <a href="{{route('users.edit', $user->id)}}" class="btn btn-warning text-white">Editar</a>
+                    <form action="{{route('users.destroy', $user->id)}}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-danger text-white">Excluir</button>
+                    </form>
                 </td>
                 </tr>
             @endforeach
