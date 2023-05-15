@@ -32,6 +32,7 @@ Route::get('gender/create', [GenderController::class, 'create'])->name('genders.
 Route::post('gender/create', [GenderController::class, 'store'])->name('genders.store');
 Route::get('gender/edit/{id}', [GenderController::class, 'edit'])->name('genders.edit');
 Route::put('gender/edit/{id}', [GenderController::class, 'update'])->name('genders.update');
+Route::delete('gender/delete/{id}', [GenderController::class, 'destroy'])->name('genders.destroy');
 
 Route::get('books', [BookController::class, 'index'])->name('books.index');
 

@@ -21,7 +21,7 @@
                 <td>{{$gender->name}}</td>
                 <td class="d-flex justify-content-around">
                     <a href="{{route('genders.edit', $gender->id)}}" class="btn btn-warning text-white">Editar</a>
-                    <form action="" method="post">
+                    <form action="{{route('genders.destroy', $gender->id)}}" method="post">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger text-white">Excluir</button>

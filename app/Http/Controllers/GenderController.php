@@ -54,4 +54,15 @@ class GenderController extends Controller
         return redirect()->route('genders.index');
 
     }
+
+    public function destroy($id)
+    {
+        $gender = $this->gender->find($id);
+
+        $gender->delete();
+
+        return redirect()->route('genders.index');
+
+    }
+
 }
