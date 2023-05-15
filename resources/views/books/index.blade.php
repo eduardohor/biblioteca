@@ -24,8 +24,12 @@
                 <th scope="row">{{$book->registration_number}}</th>
                 <td>{{$book->name}}</td>
                 <td>{{$book->author}}</td>
-                <td>{{$book->gender_id}}</td>
-                <td>{{$book->situation}}</td>
+                <td>{{$book->gender->name}}</td>
+                @if ($book->situation == 0)
+                    <td>Disponível</td> 
+                @elseif($book->situation == 1) 
+                    <td>Emprestado</td> 
+                @endif                 
                 <td class="d-flex justify-content-around">
                     <a href="" class="btn btn-warning text-white">Editar</a>
                     <form action="" method="post">

@@ -16,4 +16,9 @@ class Book extends Model
         'registration_number',
         'situation'
     ];
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class);
+    }
 }

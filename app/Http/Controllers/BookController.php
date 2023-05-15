@@ -19,7 +19,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = $this->book->all();
+        $books = $this->book->with('gender')->get();
 
         return view('books.index', compact('books'));
     }
