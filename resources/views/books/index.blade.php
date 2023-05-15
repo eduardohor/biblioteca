@@ -4,23 +4,28 @@
         <h1>LIVROS</h1>
         <div class="d-flex justify-content-between">
             <a href="{{route('genders.index')}}" class="btn btn-success mt-4 mb-4">Gêneros</a>
-            <a href="" class="btn btn-info mt-4 mb-4">Cadastrar Novo Livro</a>
+            <a href="{{route('books.create')}}" class="btn btn-info mt-4 mb-4">Cadastrar Novo Livro</a>
         </div>
 
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Nº de Cadastro</th>
+                <th scope="col">Nº de Registro</th>
                 <th scope="col">Nome</th>
-                <th scope="col">E-mail</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Gênero</th>
+                <th scope="col">Situação</th>
                 <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach ($books as $book)
                 <tr>
-                <th scope="row">1</th>
-                <td>Nome</td>
-                <td>Email</td>
+                <th scope="row">{{$book->registration_number}}</th>
+                <td>{{$book->name}}</td>
+                <td>{{$book->author}}</td>
+                <td>{{$book->gender_id}}</td>
+                <td>{{$book->situation}}</td>
                 <td class="d-flex justify-content-around">
                     <a href="" class="btn btn-warning text-white">Editar</a>
                     <form action="" method="post">
@@ -30,6 +35,7 @@
                     </form>
                 </td>
                 </tr>
+            @endforeach
             </tbody>
             </table>
 
