@@ -2,6 +2,7 @@
 @extends('template.header')
 @section('body')  
         <h1>Usuários</h1>
+        <a href="{{route('users.create')}}" class="btn btn-info mt-4 mb-4">Cadastrar Novo Usuário</a>
         <table class="table">
             <thead>
                 <tr>
@@ -12,33 +13,17 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach ($users as $user)
                 <tr>
-                <th scope="row">1</th>
-                <td>Mark MarkMarkMarkMark</td>
-                <td>OttoOttoOttoOttoOttoOtto</td>
+                <th scope="row">{{$user->id}}</th>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
                 <td>
                     <a class="btn btn-warning text-white">Editar</a>
                     <a class="btn btn-danger text-white">Excluir</a>
                 </td>
                 </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>
-                    <a class="btn btn-warning text-white">Editar</a>
-                    <a class="btn btn-danger text-white">Excluir</a>
-                </td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>
-                    <a class="btn btn-warning text-white">Editar</a>
-                    <a class="btn btn-danger text-white">Excluir</a>
-                </td>
-                </tr>
+            @endforeach
             </tbody>
             </table>
 
