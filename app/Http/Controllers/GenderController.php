@@ -35,4 +35,23 @@ class GenderController extends Controller
         return redirect()->route('genders.index');
 
     }
+
+    public function edit($id)
+    {
+        $gender = $this->gender->find($id);
+
+        return view('genders.edit', compact('gender'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dataGenders = $request->all();
+
+        $gender = $this->gender->find($id);
+
+        $gender->update($dataGenders);
+
+        return redirect()->route('genders.index');
+
+    }
 }

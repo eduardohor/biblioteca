@@ -20,7 +20,7 @@
                 <th scope="row">{{$gender->id}}</th>
                 <td>{{$gender->name}}</td>
                 <td class="d-flex justify-content-around">
-                    <a href="" class="btn btn-warning text-white">Editar</a>
+                    <a href="{{route('genders.edit', $gender->id)}}" class="btn btn-warning text-white">Editar</a>
                     <form action="" method="post">
                         @method('delete')
                         @csrf
