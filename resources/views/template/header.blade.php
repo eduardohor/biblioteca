@@ -20,8 +20,7 @@
 
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="{{route('users.index')}}" class="nav-link">Usuários</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Livros</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Gêneros</a></li>
+          <li class="nav-item"><a href="{{route('books.index')}}" class="nav-link">Livros</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Empréstimos</a></li>
         </ul>
       </header>
