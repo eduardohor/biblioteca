@@ -16,6 +16,13 @@
           </div>
         @endif
 
+        @if(session()->has('destroy'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('destroy') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         <h1>LIVROS</h1>
         <div class="d-flex justify-content-between">
             <a href="{{route('genders.index')}}" class="btn btn-success mt-4 mb-4">Gêneros</a>
@@ -47,11 +54,10 @@
                 @endif                 
                 <td class="d-flex justify-content-around">
                     <a href="{{route('books.edit', $book->id)}}" class="btn btn-warning text-white">Editar</a>
-                    <form action="{{route('books.destroy', $book->id)}}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger text-white">Excluir</button>
-                    </form>
+                    <a href="#delete-{{ $book->id }}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ $book->id }}">
+                      Remover
+                    </a>
+                    @include('books.delete')
                 </td>
                 </tr>
             @endforeach

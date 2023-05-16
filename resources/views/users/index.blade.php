@@ -9,9 +9,16 @@
           </div>
         @endif
 
-         @if(session()->has('update'))
+        @if(session()->has('update'))
           <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
             {{ session()->get('update') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
+         @if(session()->has('destroy'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('destroy') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         @endif
@@ -33,13 +40,12 @@
                 <th scope="row">{{$user->id}}</th>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td class="d-flex justify-content-around">
+                <td class="text-center">
                     <a href="{{route('users.edit', $user->id)}}" class="btn btn-warning text-white">Editar</a>
-                    <form action="{{route('users.destroy', $user->id)}}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger text-white">Excluir</button>
-                    </form>
+                    <a href="#delete-{{ $user->id }}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ $user->id }}">
+                      Remover
+                    </a>
+                    @include('users.delete')
                 </td>
                 </tr>
             @endforeach

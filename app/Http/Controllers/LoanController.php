@@ -29,14 +29,26 @@ class LoanController extends Controller
 
     public function situation(Request $request, $id)
     {
-        $loan = $this->loan->find($id);
+        $loan = $this->loan->with('book')->find($id);
+        $idBook = $loan->book->id;
+
+        $book = $this->book->find($idBook);
 
         $situation = $request->situation;
+        
+        if ($situation === 'DEVOLVIDO') {
+            $book->situation = 0;
+            $book->save();
+        } else {
+            $book->situation = 1;
+            $book->save();
+        }
+
         $loan->situation = $situation;
 
         $loan->save();
 
-        return redirect()->route('loans.index')->with('alterSituation', 'Situação alterada com sucesso!');
+        return redirect()->route('loans.index')->with('alter-situation', 'Situação alterada com sucesso!');
     }
 
     public function create()
@@ -50,6 +62,11 @@ class LoanController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->loan->rules(), $this->loan->feedback());
+        $idBook = $request->book_id;
+        $book = $this->book->find($idBook);
+
+        $book->situation = 1;
+        $book->save();
 
         $dataLoan = $request->all();
 

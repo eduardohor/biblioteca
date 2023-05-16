@@ -65,7 +65,7 @@ class GenderController extends Controller
 
         $gender->delete();
 
-        return redirect()->route('genders.index');
+        return redirect()->route('genders.index')->with('destroy', 'Gênero removido com sucesso!');
 
     }
 

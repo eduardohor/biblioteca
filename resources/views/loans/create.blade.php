@@ -24,7 +24,9 @@
                         <label>Livro</label>
                         <select class="form-select @if ($errors->has('book_id')) is-invalid @endif" name="book_id">
                             @foreach ($books as $book)
-                                <option value="{{$book->id}}">{{$book->name}}</option>
+                                @if ($book->situation === 0)
+                                    <option value="{{$book->id}}">{{$book->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                         @if ($errors->has('book_id'))

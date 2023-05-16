@@ -16,6 +16,13 @@
           </div>
         @endif
 
+        @if(session()->has('destroy'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('destroy') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         <h1>GÊNEROS</h1>
         <div class="d-flex justify-content-between">
             <a href="{{route('genders.create')}}" class="btn btn-info mt-4 mb-4">Cadastrar Novo Gênero</a>
@@ -34,13 +41,12 @@
                 <tr>
                 <th scope="row">{{$gender->id}}</th>
                 <td>{{$gender->name}}</td>
-                <td class="d-flex justify-content-around">
+                <td class="text-center">
                     <a href="{{route('genders.edit', $gender->id)}}" class="btn btn-warning text-white">Editar</a>
-                    <form action="{{route('genders.destroy', $gender->id)}}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger text-white">Excluir</button>
-                    </form>
+                    <a href="#delete-{{ $gender->id }}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ $gender->id }}">
+                      Remover
+                    </a>
+                    @include('genders.delete')
                 </td>
                 </tr>
             @endforeach
