@@ -32,7 +32,7 @@
                 @endif                 
                 <td class="d-flex justify-content-around">
                     <a href="{{route('books.edit', $book->id)}}" class="btn btn-warning text-white">Editar</a>
-                    <form action="" method="post">
+                    <form action="{{route('books.destroy', $book->id)}}" method="post">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger text-white">Excluir</button>

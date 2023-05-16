@@ -59,4 +59,14 @@ class BookController extends Controller
 
         return redirect()->route('books.index');
     }
+
+    public function destroy($id)
+    {
+
+        $book = $this->book->find($id);
+
+        $book->delete();
+
+        return redirect()->route('books.index');
+    }
 }
