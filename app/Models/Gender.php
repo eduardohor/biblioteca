@@ -17,4 +17,19 @@ class Gender extends Model
     {
         return $this->hasMany(Book::class);
     }
+
+    public function rules()
+    {
+        return [
+            'name' => 'required|min:5',
+        ];
+    }
+
+    public function feedback()
+    {
+        return [
+            'name.required' => 'O campo nome é obrigatório',
+            'name.min' => 'O nome deve ter pelo menos 5 caracteres',    
+        ];
+    }
 }

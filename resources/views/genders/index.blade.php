@@ -1,6 +1,21 @@
 
 @extends('template.header')
 @section('body')  
+
+        @if(session()->has('create'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('create') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
+        @if(session()->has('update'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('update') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         <h1>GÊNEROS</h1>
         <div class="d-flex justify-content-between">
             <a href="{{route('genders.create')}}" class="btn btn-info mt-4 mb-4">Cadastrar Novo Gênero</a>

@@ -7,8 +7,14 @@
         @method('put')
              <div class="form-group">
                 <label for="exampleInputEmail1">Nome</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{$gender->name}}">
-                
+                <input type="text" class="form-control @if ($errors->has('name')) is-invalid @endif" name="name" value="{{$gender->name}}">
+                 @if ($errors->has('name'))
+                        <div class="invalid-feedback">
+                            @foreach ($errors->get('name') as $error)
+                                {{ $error }}
+                            @endforeach
+                        </div>
+                @endif
             </div>
             <button type="submit" class="btn btn-primary mt-4">Atualizar</button>
         </form>

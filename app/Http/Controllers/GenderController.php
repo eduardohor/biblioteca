@@ -28,11 +28,13 @@ class GenderController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate($this->gender->rules(), $this->gender->feedback());
+
         $dataGenders = $request->all();
 
         $this->gender->create($dataGenders);
 
-        return redirect()->route('genders.index');
+        return redirect()->route('genders.index')->with('create', 'Gênero cadastrado com sucesso!');
 
     }
 
@@ -45,13 +47,15 @@ class GenderController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate($this->gender->rules(), $this->gender->feedback());
+
         $dataGenders = $request->all();
 
         $gender = $this->gender->find($id);
 
         $gender->update($dataGenders);
 
-        return redirect()->route('genders.index');
+        return redirect()->route('genders.index')->with('update', 'Gênero atualizado com sucesso!');
 
     }
 
