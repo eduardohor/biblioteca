@@ -7,31 +7,57 @@
             <div class="row">
                 <div class="form-group col">
                         <label>Usuário</label>
-                        <select class="form-select" name="user_id">
+                        <select class="form-select @if ($errors->has('user_id')) is-invalid @endif" name="user_id">
                             @foreach ($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('user_id'))
+                            <div class="invalid-feedback">
+                                @foreach ($errors->get('user_id') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                 </div>
                 <div class="form-group col">
                         <label>Livro</label>
-                        <select class="form-select" name="book_id">
+                        <select class="form-select @if ($errors->has('book_id')) is-invalid @endif" name="book_id">
                             @foreach ($books as $book)
                                 <option value="{{$book->id}}">{{$book->name}}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('book_id'))
+                            <div class="invalid-feedback">
+                                @foreach ($errors->get('book_id') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                 </div>
             </div> 
             <div class="row">
                 <div class="form-group col">
                     <label for="exampleInputEmail1">Data Empréstimo</label>
-                    <input type="date" class="form-control" name="loan_date" value='<?php echo date("Y-m-d"); ?>'>
-
+                    <input type="date" class="form-control @if ($errors->has('loan_date')) is-invalid @endif" name="loan_date" value='<?php echo date("Y-m-d"); ?>'>
+                    @if ($errors->has('loan_date'))
+                            <div class="invalid-feedback">
+                                @foreach ($errors->get('loan_date') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                    @endif
                 </div>
                 <div class="form-group col">
                     <label for="exampleInputEmail1">Data Entrega</label>
-                    <input type="date" class="form-control" name="return_date">
-
+                    <input type="date" class="form-control @if ($errors->has('return_date')) is-invalid @endif" name="return_date">
+                    @if ($errors->has('return_date'))
+                            <div class="invalid-feedback">
+                                @foreach ($errors->get('return_date') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                    @endif
                 </div>
             </div>       
 

@@ -1,6 +1,14 @@
 
 @extends('template.header')
 @section('body')  
+
+        @if(session()->has('create'))
+          <div class="d-block mt-3 alert alert-success alert-dismissible fade show">
+            {{ session()->get('create') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
         <h1>EMPRÉSTIMOS</h1>      
           <a href="{{route('loans.create')}}" class="btn btn-info mt-4 mb-4">Realizar Novo Empréstimo</a>
          <table class="table">

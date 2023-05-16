@@ -13,7 +13,7 @@
                                 {{ $error }}
                             @endforeach
                         </div>
-                    @endif
+                @endif
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>

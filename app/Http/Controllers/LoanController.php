@@ -37,11 +37,13 @@ class LoanController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate($this->loan->rules(), $this->loan->feedback());
+
         $dataLoan = $request->all();
 
         $this->loan->create($dataLoan);
 
-        return redirect()->route('loans.index');
+        return redirect()->route('loans.index')->with('create', 'Empréstimo realizado com sucesso!');
 
     }
 }
