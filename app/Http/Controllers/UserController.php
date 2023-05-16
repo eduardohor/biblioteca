@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,12 +28,14 @@ class UserController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {      
+        $request->validate($this->user->rules(), $this->user->feedback());
+
         $dataUser = $request->all();
 
         $this->user->create($dataUser);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('create', 'Usuário cadastrado com sucesso!');
     }
 
     public function edit($id)
@@ -44,13 +47,15 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate($this->user->rules(), $this->user->feedback());
+
         $dataUser = $request->all();
 
         $user = $this->user->find($id);
 
         $user->update($dataUser);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('update', 'Usuário atualizado com sucesso!');
     }
 
     public function destroy($id)
