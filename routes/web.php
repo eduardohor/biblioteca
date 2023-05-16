@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\GenderController;
+use App\Http\Controllers\LoanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +41,10 @@ Route::post('books/create', [BookController::class, 'store'])->name('books.store
 Route::get('books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
 Route::put('books/edit/{id}', [BookController::class, 'update'])->name('books.update');
 Route::delete('books/delete/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+
+Route::get('loans', [LoanController::class, 'index'])->name('loans.index');
+Route::get('loans/create', [LoanController::class, 'create'])->name('loans.create');
+Route::post('loans/create', [LoanController::class, 'store'])->name('loans.store');
+
 
 
