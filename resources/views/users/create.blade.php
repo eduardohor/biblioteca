@@ -13,7 +13,7 @@
                                 {{ $error }}
                             @endforeach
                         </div>
-                @endif
+                    @endif
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>
@@ -24,7 +24,7 @@
                                 {{ $error }}
                             @endforeach
                         </div>
-                @endif
+                    @endif
             </div>
             <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
         </form>

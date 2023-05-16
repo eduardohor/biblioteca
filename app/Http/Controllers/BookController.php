@@ -33,11 +33,13 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate($this->book->rules(), $this->book->feedback());
+
         $dataBooks = $request->all();
 
         $this->book->create($dataBooks);
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('create', 'Livro cadastrado com sucesso!');
     }
 
     public function edit($id)
@@ -51,13 +53,15 @@ class BookController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate($this->book->rules(), $this->book->feedback());
+
         $dataBooks = $request->all();
 
         $book = $this->book->find($id);
 
         $book->update($dataBooks);
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('update', 'Livro atualizado com sucesso!');
     }
 
     public function destroy($id)
