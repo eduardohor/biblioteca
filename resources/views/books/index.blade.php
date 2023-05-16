@@ -31,7 +31,7 @@
                     <td>Emprestado</td> 
                 @endif                 
                 <td class="d-flex justify-content-around">
-                    <a href="" class="btn btn-warning text-white">Editar</a>
+                    <a href="{{route('books.edit', $book->id)}}" class="btn btn-warning text-white">Editar</a>
                     <form action="" method="post">
                         @method('delete')
                         @csrf

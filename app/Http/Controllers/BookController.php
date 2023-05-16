@@ -39,4 +39,24 @@ class BookController extends Controller
 
         return redirect()->route('books.index');
     }
+
+    public function edit($id)
+    {
+        $book = $this->book->with('gender')->find($id);
+
+        $genders = $this->gender->all();
+
+        return view('books.edit', compact('book', 'genders'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dataBooks = $request->all();
+
+        $book = $this->book->find($id);
+
+        $book->update($dataBooks);
+
+        return redirect()->route('books.index');
+    }
 }
