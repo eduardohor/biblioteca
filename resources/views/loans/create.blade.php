@@ -36,10 +36,12 @@
                         @endif
                 </div>
             </div> 
+            
             <div class="row">
                 <div class="form-group col">
                     <label for="exampleInputEmail1">Data Empréstimo</label>
-                    <input type="date" class="form-control @if ($errors->has('loan_date')) is-invalid @endif" name="loan_date" value='<?php echo date("Y-m-d"); ?>'>
+                    <input type="date" class="form-control @if ($errors->has('loan_date')) is-invalid @endif" name="loan_date"
+                     value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>">
                     @if ($errors->has('loan_date'))
                             <div class="invalid-feedback">
                                 @foreach ($errors->get('loan_date') as $error)
@@ -50,7 +52,8 @@
                 </div>
                 <div class="form-group col">
                     <label for="exampleInputEmail1">Data Entrega</label>
-                    <input type="date" class="form-control @if ($errors->has('return_date')) is-invalid @endif" name="return_date">
+                    <input type="date" class="form-control @if ($errors->has('return_date')) is-invalid @endif" name="return_date"
+                    min="<?php echo date("Y-m-d"); ?>">
                     @if ($errors->has('return_date'))
                             <div class="invalid-feedback">
                                 @foreach ($errors->get('return_date') as $error)

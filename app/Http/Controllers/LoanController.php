@@ -27,6 +27,18 @@ class LoanController extends Controller
         return view('loans.index', compact('loans'));
     }
 
+    public function situation(Request $request, $id)
+    {
+        $loan = $this->loan->find($id);
+
+        $situation = $request->situation;
+        $loan->situation = $situation;
+
+        $loan->save();
+
+        return redirect()->route('loans.index')->with('alterSituation', 'Situação alterada com sucesso!');
+    }
+
     public function create()
     {
         $users = $this->user->all();

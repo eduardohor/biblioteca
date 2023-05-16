@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="{{route('users.index')}}" class="nav-link">Usuários</a></li>
           <li class="nav-item"><a href="{{route('books.index')}}" class="nav-link">Livros</a></li>
-          <li class="nav-item"><a href="{{route('loans.index')}}" class="nav-link">Empréstimos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Empréstimos</a></li>
         </ul>
       </header>
      </div>
@@ -35,10 +35,10 @@
  
  <script>
       var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
+      var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
+      myModal.addEventListener('shown.bs.modal', function () {
+      myInput.focus()
 })
   </script>
 </body>

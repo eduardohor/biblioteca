@@ -43,6 +43,7 @@ Route::put('books/edit/{id}', [BookController::class, 'update'])->name('books.up
 Route::delete('books/delete/{id}', [BookController::class, 'destroy'])->name('books.destroy');
 
 Route::get('loans', [LoanController::class, 'index'])->name('loans.index');
+Route::post('loans/situation/{id}', [LoanController::class, 'situation'])->name('loans.situation');
 Route::get('loans/create', [LoanController::class, 'create'])->name('loans.create');
 Route::post('loans/create', [LoanController::class, 'store'])->name('loans.store');
 

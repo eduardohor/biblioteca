@@ -33,12 +33,15 @@
                 <td>{{date('d/m/Y', strtotime($loan->return_date))}}</td>            
                 <td>{{$loan->situation}}</td>            
                 <td class="d-flex justify-content-around">
-                    <a href="" class="btn btn-primary text-white">Alterar Situação</a>
+                    <a href="#situation-{{ $loan->id }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#situation-{{ $loan->id }}">
+                      Alterar Situação
+                    </a>
+                    @include('loans.situation')
                 </td>
                 </tr>       
             @endforeach
             </tbody>
-            </table>
+            </table>      
 
 @endsection
    
