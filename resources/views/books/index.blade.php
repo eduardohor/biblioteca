@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($books as $book)
+            @forelse ($books as $book)
                 <tr>
                 <th scope="row">{{$book->registration_number}}</th>
                 <td>{{$book->name}}</td>
@@ -60,7 +60,11 @@
                     @include('books.delete')
                 </td>
                 </tr>
-            @endforeach
+            @empty
+              <tr class="text-center">
+                <td colspan="6">Nenhum livro cadastrado</td>
+              </tr>
+            @endforelse
             </tbody>
             </table>
 

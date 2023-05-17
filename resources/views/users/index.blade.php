@@ -35,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($users as $user)
+            @forelse ($users as $user)
                 <tr>
                 <th scope="row">{{$user->id}}</th>
                 <td>{{$user->name}}</td>
@@ -48,7 +48,11 @@
                     @include('users.delete')
                 </td>
                 </tr>
-            @endforeach
+            @empty
+              <tr class="text-center">
+                <td colspan="6">Nenhum usuário cadastrado</td>
+              </tr>
+            @endforelse
             </tbody>
             </table>
 

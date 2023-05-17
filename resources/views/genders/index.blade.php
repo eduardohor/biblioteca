@@ -25,6 +25,7 @@
 
         <h1>GÊNEROS</h1>
         <div class="d-flex justify-content-between">
+            <a href="{{route('books.index')}}" class="btn btn-success mt-4 mb-4">Livros</a>
             <a href="{{route('genders.create')}}" class="btn btn-info mt-4 mb-4">Cadastrar Novo Gênero</a>
         </div>
 
@@ -37,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($genders as $gender)
+            @forelse ($genders as $gender)
                 <tr>
                 <th scope="row">{{$gender->id}}</th>
                 <td>{{$gender->name}}</td>
@@ -49,7 +50,11 @@
                     @include('genders.delete')
                 </td>
                 </tr>
-            @endforeach
+            @empty
+              <tr class="text-center">
+                <td colspan="6">Nenhum gênero cadastrado</td>
+              </tr>
+            @endforelse
             </tbody>
             </table>
 

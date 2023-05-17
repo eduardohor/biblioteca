@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-             @foreach ($loans as $loan)
+             @forelse ($loans as $loan)
                 <tr>
                 <th scope="row">{{$loan->id}}</th>
                 <td>{{$loan->book->name}}</td>
@@ -54,8 +54,12 @@
                     </a>
                     @include('loans.situation')
                 </td>
-                </tr>       
-            @endforeach
+                </tr> 
+            @empty
+              <tr class="text-center">
+                <td colspan="7">Nenhum empréstimo realizado</td>
+              </tr>      
+            @endforelse
             </tbody>
             </table>      
 
