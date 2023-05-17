@@ -1,6 +1,6 @@
 
-@extends('template.header')
-@section('body')  
+@extends('layouts.template')
+@section('content')  
 
         @if(session()->has('create'))
           <div class="d-block mt-3 alert alert-success alert-dismissible fade show">

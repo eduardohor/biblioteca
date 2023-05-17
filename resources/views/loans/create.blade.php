@@ -1,6 +1,6 @@
 
-@extends('template.header')
-@section('body')  
+@extends('layouts.template')
+@section('content')  
         <h1>Realizar Empréstimo</h1>
         <form action="{{route('loans.store')}}" method="post" class="m-4 w-50" >
         @csrf

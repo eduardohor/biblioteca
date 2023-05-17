@@ -1,6 +1,6 @@
 
-@extends('template.header')
-@section('body')  
+@extends('layouts.template')
+@section('content')  
         <h1>Cadastrar Livro</h1>
         <form action="{{route('books.store')}}" method="post" class="m-4 w-50" >
         @csrf
